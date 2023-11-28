@@ -91,5 +91,10 @@ const addEmployee = () => {
 
 // Function to view all roles
 const viewRoles = () => {
-  
+    const query = "SELECT * FROM roles";
+    db.query(query, (err, results) => {
+        if (err) throw err;
+        console.table(results);
+        startMenu();
+    });
 };
