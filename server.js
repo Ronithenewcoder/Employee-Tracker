@@ -60,6 +60,11 @@ const startMenu = () => {
 // add a new employee
 const addEmployee = () => {
     inquirer.prompt([
+        {
+            type: "input",
+            name: "first_name",
+            message: "Enter employee's first name:",
+        },
     ]).then((answers) => {
         const query = "INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)";
         const values = [answers.first_name, answers.last_name, answers.role_id, answers.manager_id];
@@ -75,8 +80,16 @@ const addEmployee = () => {
 // update an employees role
     const updateEmployeeRole = () => {
         inquirer.prompt([
-            // Prompt user for employee ID and new role ID
-            // Add inquirer prompts for employee ID and new role ID
+            {
+                type: "input",
+                name: "employee_id",
+                message: "Enter the employees ID:",
+            },
+            {
+                type: "input",
+                name: "new_role_id",
+                message: "Enter the new role ID:",
+            },
         ]).then((answers) => {
             const query = "UPDATE employees SET role_id = ? WHERE employee_id = ?";
             const values = [answers.new_role_id, answers.employee_id];
