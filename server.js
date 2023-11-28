@@ -59,7 +59,17 @@ const startMenu = () => {
 
 // add a new employee
 const addEmployee = () => {
-   
+    inquirer.prompt([
+    ]).then((answers) => {
+        const query = "INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)";
+        const values = [answers.first_name, answers.last_name, answers.role_id, answers.manager_id];
+
+        db.query(query, values, (err, results) => {
+            if (err) throw err;
+            console.log("Employee added successfully!");
+            startMenu();
+        });
+    });
 };
 
 // update an employees role
