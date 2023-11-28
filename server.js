@@ -21,7 +21,7 @@ const startMenu = () => {
         {
             type: "list",
             name: "menu",
-            message: "What would you like to do?",
+            message: "Please select what you would like to do?",
             choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View All Roles','Quit'],
         }
     ]).then((res) => {
@@ -44,12 +44,17 @@ const startMenu = () => {
                 db.end();
                 break;
         }
-    })
-}
+    });
+};
 
 // view all employees
-const viewEmployees = () => {
-   
+    const viewEmployees = () => {
+        const query = "SELECT * FROM employees";
+        db.query(query, (err, results) => {
+            if (err) throw err;
+            console.table(results);
+            startMenu();
+        });
 };
 
 // add a new employee
