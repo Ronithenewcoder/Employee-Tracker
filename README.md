@@ -12,6 +12,7 @@ When I enter node server.js I should be prompted with a series of question about
 Classmates, Youtube, Google (overview)
 
 ## Demonstration video
+https://clipchamp.com/watch/MuYoUzEVkcK
 
 ## Screenshot
 ![Alt text](image.png)
