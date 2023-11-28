@@ -73,8 +73,20 @@ const addEmployee = () => {
 };
 
 // update an employees role
-const updateEmployeeRole = () => {
+    const updateEmployeeRole = () => {
+        inquirer.prompt([
+            // Prompt user for employee ID and new role ID
+            // Add inquirer prompts for employee ID and new role ID
+        ]).then((answers) => {
+            const query = "UPDATE employees SET role_id = ? WHERE employee_id = ?";
+            const values = [answers.new_role_id, answers.employee_id];
     
+            db.query(query, values, (err, results) => {
+                if (err) throw err;
+                console.log("Employee role updated successfully!");
+                startMenu();
+            });
+        });
 };
 
 // Function to view all roles
